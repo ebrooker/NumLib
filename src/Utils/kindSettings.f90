@@ -1,0 +1,8 @@
+MODULE kindSettings
+USE, INTRINSIC :: ISO_FORTRAN_ENV
+IMPLICIT NONE
+PUBLIC
+    INTEGER, PARAMETER :: rkp  = real64
+    INTEGER, PARAMETER :: ilkp = int16
+    INTEGER, PARAMETER :: iskp = int64
+END MODULE kindSettings
