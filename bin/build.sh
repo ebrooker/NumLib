@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NUMLIB_DIR=/data2/eb11d/misc/my_libs/github/NumLib/
+NUMLIB_DIR=../
 cd $NUMLIB_DIR
 
 if [ -d "$NUMLIB_DIR/build" ]
