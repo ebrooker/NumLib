@@ -7,77 +7,66 @@ PRIVATE
 
 CONTAINS
 
-	FUNCTION df1(x,args) RESULT(y)
+	FUNCTION df1(x) RESULT(y)
 		REAL(rkp)                       :: y
 		REAL(rkp), INTENT(IN)           :: x
-		REAL(rkp), OPTIONAL, INTENT(IN) :: args(:)
 
 		y = 12.0*x**2 + 6.0*x + 6.0
 
 	END FUNCTION df1
 
-	FUNCTION d2f1(x,args) RESULT(y)
+	FUNCTION d2f1(x) RESULT(y)
 		REAL(rkp)                       :: y
 		REAL(rkp), INTENT(IN)           :: x
-		REAL(rkp), OPTIONAL, INTENT(IN) :: args(:)
 
 		y = 24.0*x + 6.0
 
 	END FUNCTION d2f1
 
-	FUNCTION d3f1(x,args) RESULT(y)
+	FUNCTION d3f1(x) RESULT(y)
 		REAL(rkp)                       :: y
 		REAL(rkp), INTENT(IN)           :: x
-		REAL(rkp), OPTIONAL, INTENT(IN) :: args(:)
 
 		y = 24.0
 
 	END FUNCTION d3f1
 
-	FUNCTION d4f1(x,args) RESULT(y)
+	FUNCTION d4f1(x) RESULT(y)
 		REAL(rkp)                       :: y
 		REAL(rkp), INTENT(IN)           :: x
-		REAL(rkp), OPTIONAL, INTENT(IN) :: args(:)
 
 		y = 0.0
 
 	END FUNCTION d4f1
 
 
-
-
-
-	FUNCTION df2(x,args) RESULT(y)
+	FUNCTION df2(x) RESULT(y)
 		REAL(rkp)                       :: y
 		REAL(rkp), INTENT(IN)           :: x
-		REAL(rkp), OPTIONAL, INTENT(IN) :: args(:)
 
 		y = -15.0*SIN(3.0*x)
 
 	END FUNCTION df2
 
-	FUNCTION d2f2(x,args) RESULT(y)
+	FUNCTION d2f2(x) RESULT(y)
 		REAL(rkp)                       :: y
 		REAL(rkp), INTENT(IN)           :: x
-		REAL(rkp), OPTIONAL, INTENT(IN) :: args(:)
 
 		y = -45.0*COS(3.0*x)
 
 	END FUNCTION d2f2
 
-	FUNCTION d3f2(x,args) RESULT(y)
+	FUNCTION d3f2(x) RESULT(y)
 		REAL(rkp)                       :: y
 		REAL(rkp), INTENT(IN)           :: x
-		REAL(rkp), OPTIONAL, INTENT(IN) :: args(:)
 
 		y = 135.0*SIN(3.0*x)
 
 	END FUNCTION d3f2
 
-	FUNCTION d4f2(x,args) RESULT(y)
+	FUNCTION d4f2(x) RESULT(y)
 		REAL(rkp)                       :: y
 		REAL(rkp), INTENT(IN)           :: x
-		REAL(rkp), OPTIONAL, INTENT(IN) :: args(:)
 
 		y = 405.0*COS(3.0*x)
 
