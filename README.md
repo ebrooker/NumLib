@@ -25,3 +25,7 @@ Numerical methods supported:
 Numerical methods in development:
   - Numerical Integration
     - ???
+  - Unconstrained Optimization
+    - Line Search w/ Backtracking for minimization
+      - Steepest Descent, Inexact Newton, Broyden-Fletcher-Goldfarb-Shanno
+    - Controlled Random Search for minimization (stochastic method)
