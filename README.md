@@ -16,16 +16,19 @@ It is recommended having a relatively newer compiler to capture more modern Fort
 # Methods
 Numerical methods supported:
 
+  - Basic Linear Algebra (Infancy)
+    - Inner and Outer Products (workarounds for intrinsics issues)
+    - Sherman Morrison formula
   - Numerical differentiation
     - Forward differencing (1st/2nd order stencils up to 4th derivatives)
     - Backward differencing (1st/2nd order stencils up to 4th derivatives)
     - Central differencing (2nd/4th order stencils up to 4th derivatives)
     - Richardson Extrapolation
-
-Numerical methods in development:
-  - Numerical Integration
-    - ???
   - Unconstrained Optimization
     - Line Search w/ Backtracking for minimization
       - Steepest Descent, Inexact Newton, Broyden-Fletcher-Goldfarb-Shanno
+
+
+Numerical methods in development:
+  - Unconstrained Optimization
     - Controlled Random Search for minimization (stochastic method)
