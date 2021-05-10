@@ -1,4 +1,4 @@
-MODULE numericalDifferentiation
+MODULE differentiation
 USE finiteDifferences
 USE richardsonExtrapolation
 IMPLICIT NONE
@@ -10,4 +10,4 @@ IMPLICIT NONE
 !! richExtrap (Richardson Extrapolation 4th order)
 !!
 !!************************************************
-END MODULE numericalDifferentiation
+END MODULE differentiation

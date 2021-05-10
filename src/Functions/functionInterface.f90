@@ -1,5 +1,4 @@
 MODULE functionInterface
-USE kindSettings, ONLY : rkp
 IMPLICIT NONE
 PRIVATE
 
