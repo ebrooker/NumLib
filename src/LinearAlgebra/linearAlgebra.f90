@@ -52,20 +52,4 @@ CONTAINS
     
     END FUNCTION innerprod_2d
 
-    SUBROUTINE shermanMorrison(s,u,v,iB)
-        REAL(rkp), INTENT(IN   ) :: u(:,:), v(:,:), s(:,:)
-        REAL(rkp), INTENT(INOUT) :: iB(:,:)
-        REAL(rkp)                :: sTu, isTu, t1
-
-        sTu  = DOT_PRODUCT(s(:,1),u(:,1))
-        isTu = 1.0/sTu
-        t1   = sTu + INNERPROD(MATMUL(TRANSPOSE(u),iB),u)
-
-        iB = iB - ( MATMUL( MATMUL(iB,u), TRANSPOSE(s) ) &
-                  + MATMUL( MATMUL(s,TRANSPOSE(u)), iB ) ) * isTu
-
-        iB = iB + MATMUL(s,TRANSPOSE(s)) * t1 * (isTu**2)
-
-    END SUBROUTINE shermanMorrison
-
 END MODULE linearAlgebra

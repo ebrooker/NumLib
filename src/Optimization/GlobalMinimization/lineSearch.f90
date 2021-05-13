@@ -29,6 +29,7 @@ CONTAINS
         REAL(rkp), INTENT(INOUT) :: B(:,:), iB(:,:)
         REAL(rkp), ALLOCATABLE   :: s(:,:), u(:,:), v(:,:)
         REAL(rkp)                :: alpha, beta
+        REAL(rkp)                :: sTu, isTu, t1
         INTEGER                  :: m
 
         ! If first iteration, use initial iB and exit
@@ -58,7 +59,14 @@ CONTAINS
               +  beta * MATMUL(v,TRANSPOSE(v))
 
         ! Invert approx Hess with Sherman Morrison formula
-        CALL shermanMorrison(s,u,v,iB)
+        ! formula is applied twice to get solution we seel
+        sTu  = DOT_PRODUCT(s(:,1),u(:,1))
+        isTu = 1.0/sTu
+        t1   = sTu + INNERPROD(MATMUL(TRANSPOSE(u),iB),u)
+        iB = iB - ( MATMUL( MATMUL(iB,u), TRANSPOSE(s) ) &
+                  + MATMUL( MATMUL(s,TRANSPOSE(u)), iB ) ) * isTu
+
+        iB = iB + MATMUL(s,TRANSPOSE(s)) * t1 * (isTu**2)
 
         ! Calculate solution descent direction
         p = - MATMUL(iB,gradf(x(:,1)))
