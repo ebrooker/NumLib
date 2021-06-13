@@ -20,10 +20,11 @@
 !!     - forward_euler_step: Interface name for above implementations
 !!
 !! Other explicit RK methods defined here:
-!!     - midpoint_explicit_step: 2nd order RK method, Midpoint method
-!!     - heun_explicit_step:     2nd order RK method, Heun's method
-!!     - ralston_explicit_step:  2nd order RK method, Ralston's method
-!!     - rk4_explicit_step:      4th order RK method, generic RK4 method
+!!     - midpoint_explicit_step: 2nd order, Midpoint method
+!!     - heun_explicit_step:     2nd order, Heun's method
+!!     - ralston_explicit_step:  2nd order, Ralston's method
+!!     - ssprk3_explicit_step:   3rd order, Strong Stability Preserving RK
+!!     - rk4_explicit_step:      4th order, generic RK4 method
 !!
 !!*****************************************************************************
 MODULE rungekutta_explicit
@@ -36,6 +37,7 @@ PRIVATE
     PUBLIC :: midpoint_explicit_step
     PUBLIC :: heun_explicit_step
     PUBLIC :: ralston_explicit_step
+    PUBLIC :: ssprk3_explicit_step
     PUBLIC :: rk4_explicit_step
 
     INTERFACE forward_euler_step
@@ -126,6 +128,26 @@ PRIVATE
 
     !!**********************************************************!!
 
+    INTERFACE ssprk3_explicit_step
+        MODULE SUBROUTINE ssprk3_explicit_1eqn (f, t, y0, y, h)
+            ! Explicit SSPRK3 ODE integration method
+            PROCEDURE(ode_single)    :: f
+            REAL(rkp), INTENT(IN)    :: t
+            REAL(rkp), INTENT(IN)    :: y0
+            REAL(rkp), INTENT(OUT)   :: y
+            REAL(rkp), INTENT(INOUT) :: h
+        END SUBROUTINE ssprk3_explicit_1eqn
+        
+        MODULE SUBROUTINE ssprk3_explicit_neqn (f, t, y0, y, h)
+            ! Explicit SSPRK3 ODE integration method
+            PROCEDURE(ode_system)    :: f
+            REAL(rkp), INTENT(IN)    :: t
+            REAL(rkp), INTENT(IN)    :: y0(:)
+            REAL(rkp), INTENT(OUT)   :: y(SIZE(y0,DIM=1))
+            REAL(rkp), INTENT(INOUT) :: h
+        END SUBROUTINE ssprk3_explicit_neqn
+    END INTERFACE ssprk3_explicit_step
+
     INTERFACE rk4_explicit_step
         MODULE SUBROUTINE rk4_explicit_1eqn (f, t, y0, y, h)
             ! Explicit RK4 ODE integration method
@@ -145,5 +167,7 @@ PRIVATE
             REAL(rkp), INTENT(INOUT) :: h
         END SUBROUTINE rk4_explicit_neqn
     END INTERFACE rk4_explicit_step
+
+
 
 END MODULE rungekutta_explicit
