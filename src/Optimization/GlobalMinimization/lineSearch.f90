@@ -5,13 +5,26 @@ USE multiVarFuncIntrfc, ONLY : f_intrfc, gradf_intrfc
 IMPLICIT NONE
 PRIVATE
 
-    PUBLIC :: BGFS
+    PUBLIC :: BFGS
     PUBLIC :: steepDescent
     PUBLIC :: backtrack
 
 CONTAINS
 
     SUBROUTINE steepDescent(gradf,x,p)
+        !!
+        !! Steepest Gradient Descent
+        !! 
+        !! gradf : function handle for gradient using
+        !!         prodecure interface "gradf_intrfc"
+        !! 
+        !! x (REAL) : shape (:,:) row/column vector input
+        !!            for gradient function
+        !!
+        !! p (REAL) : same shape as x, this is resulting
+        !!            values from grad(x) prodedure and is
+        !!            the direction we iterat towards solution
+        !!
         PROCEDURE(gradf_intrfc) :: gradf
         REAL(rkp),  INTENT(IN ) :: x(:,:)
         REAL(rkp),  INTENT(OUT) :: p(:,:)
@@ -21,7 +34,33 @@ CONTAINS
     END SUBROUTINE steepDescent
 
 
-    SUBROUTINE BGFS(gradf,first,x,xi,p,B,iB)
+    SUBROUTINE BFGS(gradf,first,x,xi,p,B,iB)
+        !!
+        !! Broyden-Fletcher-Goldfarb-Shanno method
+        !! 
+        !! gradf : function handle for gradient using
+        !!         prodecure interface "gradf_intrfc"
+        !! 
+        !! first (LOGICAL) : True on first procedure call
+        !!                   for initializing inverse of
+        !!                   Hessian as identity matrix
+        !!
+        !! x (REAL) : shape (n,1) row/column vector input
+        !!            for gradient function and the current
+        !!            solution guess
+        !!
+        !! xi (REAL) : old guess of solution
+        !!
+        !! p (REAL) : same shape as x, this is resulting
+        !!            values from grad(x) prodedure
+        !!
+        !! B (REAL) : shape (n,n) matrix that serves as 
+        !!            an approximation to the Hessian of f
+        !!
+        !! iB (REAL) : same shape as B, inverse of B, it is
+        !!             computed using doubly applied Sherman-
+        !!             Morrison formula
+        !!
         PROCEDURE(gradf_intrfc)  :: gradf
         LOGICAL,   INTENT(IN   ) :: first
         REAL(rkp), INTENT(IN   ) :: x(:,:), xi(:,:)
@@ -59,7 +98,7 @@ CONTAINS
               +  beta * MATMUL(v,TRANSPOSE(v))
 
         ! Invert approx Hess with Sherman Morrison formula
-        ! formula is applied twice to get solution we seel
+        ! formula is applied twice to get solution we see
         sTu  = DOT_PRODUCT(s(:,1),u(:,1))
         isTu = 1.0/sTu
         t1   = sTu + INNERPROD(MATMUL(TRANSPOSE(u),iB),u)
@@ -71,10 +110,33 @@ CONTAINS
         ! Calculate solution descent direction
         p = - MATMUL(iB,gradf(x(:,1)))
 
-    END SUBROUTINE BGFS
+    END SUBROUTINE BFGS
 
 
     SUBROUTINE backtrack(f,gradf,x,p,alpha0,rho,gamma,alpha)
+        !!
+        !! Backtracking method used as part of a line search method
+        !! to solve multivariate unconstrained optimization problems.
+        !!
+        !! f : function handle using a multidimensional procedure interface
+        !!
+        !! gradf: Same as above, but for the gradient of the function
+        !!
+        !! x (REAL) : shape (n,1) technically, it is the initial guess of 
+        !! the solution
+        !!
+        !! p (REAL) : shape(x), it is the descent direction towards solution
+        !!
+        !! alpha0 (REAL) : constant tunable parameter
+        !!
+        !! rho  (REAL) : constant tunable parameter
+        !!
+        !! gamma (REAL) : constant tunable parameter
+        !!
+        !! alpha (REAL) : the variable stepsize that we need to calculate
+        !!                for advancing the line search solution at each
+        !!                iteration
+        !!
         PROCEDURE(gradf_intrfc) :: gradf
         PROCEDURE(f_intrfc    ) :: f
         REAL(rkp),  INTENT(IN ) :: x(:,:), p(:,:)
