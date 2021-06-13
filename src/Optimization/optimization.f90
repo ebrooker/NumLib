@@ -9,16 +9,16 @@
 !!
 !!********************************************************************
 MODULE optimization
-USE lineSearch
-IMPLICIT NONE
-!!
-!! Unconstrained GlobalMinmization Methods:
-!!      - lineSearch: Global Minimization routine w/ backtracking
-!!          -- steepestDescent (multidimensional optimizer)
-!!          -- BFGS: Broyden-Fletcher-Goldfarb-Shanno algorithm
-!!                   use Hessian approximations
-!!
-!!  
-!!
-!!
+    USE lineSearch
+    IMPLICIT NONE
+    !!
+    !! Unconstrained GlobalMinmization Methods:
+    !!      - lineSearch: Global Minimization routine w/ backtracking
+    !!          -- steepestDescent (multidimensional optimizer)
+    !!          -- BFGS: Broyden-Fletcher-Goldfarb-Shanno algorithm
+    !!                   use Hessian approximations
+    !!
+    !!  
+    !!
+    !!
 END MODULE optimization

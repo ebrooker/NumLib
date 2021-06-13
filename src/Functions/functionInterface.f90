@@ -35,4 +35,22 @@ PRIVATE
         END FUNCTION f_1d_intrfc
     END INTERFACE
 
+    ABSTRACT INTERFACE
+        FUNCTION ode_single(x,y0) RESULT(y)
+            USE kindSettings, ONLY : rkp
+            REAL(rkp), INTENT(IN) :: x
+            REAL(rkp), INTENT(IN) :: y0
+            REAL(rkp)             :: y
+        END FUNCTION ode_single
+    END INTERFACE
+
+    ABSTRACT INTERFACE
+        FUNCTION ode_system(x,y0) RESULT(y)
+            USE kindSettings, ONLY : rkp
+            REAL(rkp), INTENT(IN) :: x
+            REAL(rkp), INTENT(IN) :: y0(:)
+            REAL(rkp)             :: y(SIZE(y0,DIM=1))
+        END FUNCTION ode_system
+    END INTERFACE
+
 END MODULE functionInterface

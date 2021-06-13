@@ -1,3 +1,19 @@
+!!********************************************************************
+!! Author: Ezra Brooker
+!! 2021
+!!
+!! NumLib/src/Optimization/GlobalMinimization/lineSearch.f90
+!!
+!! Module used for line search algorithm in global minimization.
+!!     
+!!       - backtrack: Backtracking procedure for line search step size
+!!                   calculation
+!!
+!!       - steepDescent: Steepest Gradient Descent method
+!!
+!!       - BFGS: Broyden-Fletcher-Goldfarb-Shanno algorithm
+!!
+!!********************************************************************
 MODULE lineSearch
 USE kindSettings, ONLY : rkp
 USE linearAlgebra, ONLY : outerProd, innerProd, shermanMorrison
