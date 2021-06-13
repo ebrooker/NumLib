@@ -24,6 +24,14 @@ Numerical methods supported:
     - Backward differencing (1st/2nd order stencils up to 4th derivatives)
     - Central differencing (2nd/4th order stencils up to 4th derivatives)
     - Richardson Extrapolation
+  - Numerical Integration
+    - Ordinary Differential Equations
+      - Explicit Runge Kutta Methods
+        - Forward Euler
+        - Midpoint
+        - Heun's
+        - Ralston's
+        - Generic RK4
   - Unconstrained Optimization
     - Line Search w/ Backtracking for minimization
       - Steepest Descent, Inexact Newton, Broyden-Fletcher-Goldfarb-Shanno
@@ -32,3 +40,8 @@ Numerical methods supported:
 Numerical methods in development:
   - Unconstrained Optimization
     - Controlled Random Search for minimization (stochastic method)
+  - One-dimensional optimization
+    - Bisection
+    - Secant
+    - Newton's
+    - Halley's
