@@ -1,3 +1,16 @@
+!!*********************************************
+!!
+!! Author: Ezra Brooker
+!! 2021
+!! 
+!! src/Functions/funcs.f90
+!!
+!! Module provides a number of function
+!! expressions for use in the UNIT TESTS of 
+!! NumLib. The 2D Rosenbrock equations are 
+!! stored here.
+!!
+!!*********************************************
 MODULE funcs
 USE kindSettings, ONLY : rkp, ilkp, iskp
 IMPLICIT NONE

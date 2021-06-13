@@ -1,3 +1,16 @@
+!!*********************************************
+!!
+!! Author: Ezra Brooker
+!! 2021
+!! 
+!! src/Functions/derivatives.f90
+!!
+!! Module provides a number of analytical 
+!! derivative expressions for use in the UNIT
+!! TESTS of NumLib. There up to 4th order
+!! derivative functions contained here.
+!!
+!!*********************************************
 MODULE derivatives
 USE kindSettings, ONLY : rkp, ilkp, iskp
 IMPLICIT NONE
