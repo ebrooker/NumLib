@@ -1,6 +1,7 @@
 # Development folders
 **/dev
 **/testdir
+**/build
 
 # Fortran module files
 *.mod

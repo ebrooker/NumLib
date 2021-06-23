@@ -16,7 +16,7 @@
 !!********************************************************************
 MODULE lineSearch
 USE kindSettings, ONLY : rkp
-USE linearAlgebra, ONLY : outerProd, innerProd, shermanMorrison
+USE linearAlgebra, ONLY : outerProd, innerProd
 USE multiVarFuncIntrfc, ONLY : f_intrfc, gradf_intrfc
 IMPLICIT NONE
 PRIVATE

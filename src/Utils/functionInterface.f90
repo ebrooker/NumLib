@@ -31,7 +31,7 @@ MODULE functionInterface
 IMPLICIT NONE
 PRIVATE
 
-    PUBLIC :: f_1d_intrfc
+    PUBLIC :: f_1d_intrfc, ode_single, ode_system
 
     ABSTRACT INTERFACE
         FUNCTION f_1d_intrfc(Xx) RESULT(Yy)

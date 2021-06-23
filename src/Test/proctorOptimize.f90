@@ -35,7 +35,7 @@ PRIVATE
         CONTAINS
             PROCEDURE :: init => constructor
             PROCEDURE :: test_lineSearch
-            PROCEDURE :: test_BGFS
+            PROCEDURE :: test_BFGS
             PROCEDURE :: test_steepDescent
             PROCEDURE :: output
             PROCEDURE :: set_f
@@ -113,7 +113,7 @@ CONTAINS
     SUBROUTINE test_lineSearch(this)
         CLASS(proctorOpt) :: this
         CALL this%test_steepDescent()
-        CALL this%test_BGFS()
+        CALL this%test_BFGS()
 
     END SUBROUTINE test_lineSearch
 
@@ -141,7 +141,7 @@ CONTAINS
     END SUBROUTINE test_steepDescent
 
 
-    SUBROUTINE test_BGFS(this)
+    SUBROUTINE test_BFGS(this)
         CLASS(proctorOpt) :: this
         LOGICAL           :: flag=.true.
 
@@ -149,7 +149,7 @@ CONTAINS
         this%n  = 0
         DO WHILE (this%L2 >= this%tol .and. this%n < this%nmax)
             
-            CALL BGFS(this%gradf,flag,this%x,this%x0,    &
+            CALL BFGS(this%gradf,flag,this%x,this%x0,    &
                                  this%p,this%B,this%iB)
 
             CALL backtrack(this%f,this%gradf,this%x,this%p,         &
@@ -163,10 +163,10 @@ CONTAINS
             if (this%n.gt.0) flag=.false.
         
         ENDDO
-        write(*,*) "BGFS SOLUTION:"
+        write(*,*) "BFGS SOLUTION:"
         write(*,*) "n,x,L2 = ", this%n,this%x(:,1),this%L2
         
-    END SUBROUTINE test_BGFS
+    END SUBROUTINE test_BFGS
 
     SUBROUTINE output(this)
         CLASS(proctorOpt) :: this

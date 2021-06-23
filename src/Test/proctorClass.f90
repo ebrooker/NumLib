@@ -4,7 +4,7 @@
 MODULE proctorClass
 USE kindSettings, ONLY : rkp
 USE functionInterface, ONLY : f_1d_intrfc
-USE numericalDifferentiation
+USE differentiation
 IMPLICIT NONE
 PRIVATE
 

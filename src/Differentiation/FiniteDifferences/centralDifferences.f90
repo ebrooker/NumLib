@@ -87,9 +87,9 @@ CONTAINS
         IF (PRESENT(order)) THEN
           iord = order
         ELSE
-          iord = 1 ! default 1st order accuracy
+          iord = 2 ! default 1st order accuracy
           WRITE(*,*) "[Central Differentiation Warning] &
-          Using 2ndt order accurate method by default"
+          Using 2nd order accurate method by default"
           WRITE(*,*) '    Set "order" to a value of either &
           2 or 4 in "cntrDiff" argument list to disable &
           this warning'
