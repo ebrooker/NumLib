@@ -3,7 +3,7 @@
 !! Author: Ezra Brooker
 !! 2021
 !! 
-!! src/Functions/functionInterface.f90
+!! src/Utils/functionInterface.f90
 !!
 !! Module provides an abstract interface for
 !! 1d simple functions of the form f(x) = y
@@ -19,6 +19,12 @@
 !! NumLib that make use of this interface
 !! such as the finite differentiation
 !! mehods in the Differentiation subpackage
+!!
+!! Additional interfaces are provided for the
+!! ODE integration subpackage to allow for the
+!! integration of a single ODE and systems of
+!! ODEs and is used to make a generic interface
+!! for integrating both types
 !!
 !!*********************************************
 MODULE functionInterface
