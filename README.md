@@ -16,7 +16,7 @@ It is recommended having a relatively newer compiler to capture more modern Fort
 # Methods
 Numerical methods supported:
 
-  - Basic Linear Algebra (Infancy)
+  - Linear Algebra
     - Inner and Outer Products (workarounds for intrinsics issues)
     - Gaussian Elimination (Basic, Row Echelon From, and Reduced REF)
     - Gauss-Jordan Inverse using RREF([A|I]) = [I|B] --> B = inv(A)
