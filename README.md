@@ -16,32 +16,37 @@ It is recommended having a relatively newer compiler to capture more modern Fort
 # Methods
 Numerical methods supported:
 
-  - Basic Linear Algebra (Infancy)
+  - Linear Algebra
     - Inner and Outer Products (workarounds for intrinsics issues)
-    - Sherman Morrison formula
+    - Gaussian Elimination (Basic, Row Echelon From, and Reduced REF)
+    - Gauss-Jordan Inverse using RREF([A|I]) = [I|B] --> B = inv(A)
+    - Thomas solver for tridiagonal matrix systems
+    - Back substitution for solving Ax=b with Gaussia Elimination
+    
   - Numerical differentiation
     - Forward differencing (1st/2nd order stencils up to 4th derivatives)
     - Backward differencing (1st/2nd order stencils up to 4th derivatives)
     - Central differencing (2nd/4th order stencils up to 4th derivatives)
     - Richardson Extrapolation
+
   - Numerical Integration
     - Ordinary Differential Equations
       - Explicit Runge Kutta Methods
-        - Forward Euler
-        - Midpoint
-        - Heun's
-        - Ralston's
-        - Generic RK4
+        - Forward Euler, Midpoint, Heun's
+        - Ralston's, SSPRK3, Generic RK4
+
   - Unconstrained Optimization
     - Line Search w/ Backtracking for minimization
       - Steepest Descent, Inexact Newton, Broyden-Fletcher-Goldfarb-Shanno
-
+    - Univariate Rootfinding
+      - Newton's, Halley's, Steffenson's
+      - Muller's, Ridder's, Secant, Bisection
+      - False Position, ITP, Brent-Dekker
+      - Inverse Quadratic Interpolation
 
 Numerical methods in development:
   - Unconstrained Optimization
     - Controlled Random Search for minimization (stochastic method)
-  - One-dimensional optimization
-    - Bisection
-    - Secant
-    - Newton's
-    - Halley's
+  - Linear Algebra
+    - Forward Substitution
+    - LU, LUP, LUPQ, LDU, and Cholesky-variant decompositions
