@@ -5,25 +5,6 @@
 !!
 !! NumLib/src/LinearAlgebra/lu_decomposition_submod.f90
 !!
-!! Performs Gaussian Elimination on a given matrix of shape (m,n) using partial
-!! pivoting to obtain an upper triangular matrix U. This new matrix can also be
-!! put into either Row Echelon Form or Reduced Row Echelon Form with an optional
-!! argument character string flag.
-!!
-!! The procedure will overwrite the input matrix unless user gives an optional
-!! second matrix, then the solution will be stored in that second argument, and
-!! thus preserving the original input matrix.
-!!
-!! The use of partial pivoting, i.e. selecting the row with the maximum
-!! absolute value in the kth-column, is implemented for maximal stability.
-!! Normal pivoting with the maximum non-absolute value is less stable, and
-!! no pivoting, i.e. no row swapping, is the least stable version.
-!!
-!! INPUT:
-!!     A - Shape (m,n) matrix to be transformed using Gaussian Elimination; is
-!!         overwritten unless a separate solution matrix variable is provided.
-!!         This can either be a typical square matrix or the augmented matrix
-!!         [A|b] from Ax=b
 !!
 !!******************************************************************************
 SUBMODULE (matrix_transforms) lu_decomposition_submod
