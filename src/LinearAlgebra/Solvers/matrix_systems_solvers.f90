@@ -37,6 +37,12 @@ PRIVATE
             REAL(rkp), INTENT(OUT) :: x(:)
         END SUBROUTINE back_substitution
 
+        MODULE SUBROUTINE forward_substitution (L,b,y)
+            REAL(rkp), INTENT(IN ) :: L(:,:)
+            REAL(rkp), INTENT(IN ) :: b(:)
+            REAL(rkp), INTENT(OUT) :: y(:)
+        END SUBROUTINE forward_substitution
+
     END INTERFACE
 
 END MODULE matrix_systems_solvers

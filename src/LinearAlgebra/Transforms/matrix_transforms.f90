@@ -14,7 +14,7 @@ USE kindSettings
 IMPLICIT NONE
 PRIVATE
 
-    PUBLIC :: gaussian_elimination, gauss_jordan_inverse
+    PUBLIC :: gaussian_elimination, gauss_jordan_inverse, lu_decomposition
 
     INTERFACE
     
@@ -33,6 +33,15 @@ PRIVATE
             REAL(rkp), OPTIONAL, INTENT(IN ) :: tol
         END SUBROUTINE gauss_jordan_inverse
 
+        MODULE SUBROUTINE lu_decomposition (A,L,U,P,Q,D,S)
+            REAL(rkp),                  INTENT(IN   ) :: A(:,:)
+            REAL(rkp),                  INTENT(OUT  ) :: L(:,:)
+            REAL(rkp),                  INTENT(OUT  ) :: U(:,:)
+            REAL(rkp),        OPTIONAL, INTENT(INOUT) :: P(:,:)
+            REAL(rkp),        OPTIONAL, INTENT(INOUT) :: Q(:,:)
+            REAL(rkp),        OPTIONAL, INTENT(INOUT) :: D(:,:)
+            REAL(rkp),        OPTIONAL, INTENT(INOUT) :: S(:,:)
+        END SUBROUTINE lu_decomposition
 
     END INTERFACE
 
